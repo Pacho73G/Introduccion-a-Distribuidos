@@ -1,34 +1,52 @@
 # Laboratorio 01 – Multiplicación de Matrices con OpenMP
 
-Este laboratorio tuvo como objetivo evaluar el rendimiento de la multiplicación de matrices clásica paralelizada mediante **OpenMP**, ejecutada en un entorno Linux. Se buscó analizar el comportamiento del tiempo de ejecución al variar el tamaño de la matriz y el número de hilos utilizados, incorporando además un sustento estadístico frente al ruido y las cargas alternas del sistema operativo.
+Este laboratorio corresponde al curso **Introducción a Sistemas Distribuidos**.  
+El objetivo fue implementar, corregir, documentar y probar un algoritmo de **multiplicación de matrices clásica (MM)** en C, paralelizado con **OpenMP**, y diseñar un plan de pruebas de carga que permita evaluar su rendimiento.
 
 ---
 
-## Estructura del laboratorio
+## 📌 Descripción del laboratorio
 
-- **`mmClasicaOpenMP.c`** → código fuente en C con la implementación de la multiplicación de matrices utilizando OpenMP.  
-- **`mmClasicaOpenMP`** → ejecutable generado en Linux a partir del código fuente.  
-- **`Makefile`** → archivo de automatización que permite compilar fácilmente el proyecto y generar el ejecutable.  
-- **`lanzador.pl`** → script en Perl para ejecutar automáticamente el programa con distintos tamaños de matriz y números de hilos, almacenando los resultados en archivos `.dat`.  
-- **`dat.zip`** → contiene todos los archivos de salida `.dat` con las corridas experimentales.  
-- **`Tabla_Resultados.pdf`** → tabla consolidada con los resultados finales del laboratorio, que incluye **promedio de tiempo** y **desviación estándar** para cada combinación de tamaño e hilos.  
-
----
-
-## Resultados
-
-Los resultados experimentales se consolidaron en el archivo [`Tabla_Resultados.pdf`](./Tabla_Resultados.pdf), donde se presenta por cada tamaño de matriz y número de hilos el **tiempo promedio** y la **desviación estándar**.  
+- Se partió de un código base en C que implementa la multiplicación de matrices.  
+- Se corrigió y documentó el código, agregando soporte a paralelismo con OpenMP.  
+- Se adaptó un **Makefile** para automatizar la compilación del programa.  
+- Se creó un **script de automatización (`lanzador.pl`)** para ejecutar múltiples pruebas con diferentes tamaños de matrices y distintos niveles de paralelismo.  
+- Se diseñó un **plan de pruebas de carga** con 12 dimensiones menores a 14.000 y con hilos: **1, 4, 8, 16 y 20**.  
+- Los resultados se consolidaron en archivos `.dat`, que posteriormente fueron analizados estadísticamente.
 
 ---
 
-## Análisis
+## 📂 Archivos incluidos
 
-Los resultados muestran que, en general, los tiempos promedio disminuyen al aumentar el número de hilos, aunque este efecto depende del tamaño de la matriz. En tamaños pequeños, la sobrecarga de la creación y sincronización de hilos limita las ganancias e incrementa la variabilidad. Para tamaños medianos y grandes, el paralelismo ofrece beneficios claros: el tiempo promedio disminuye y la desviación estándar se mantiene en márgenes aceptables, lo que indica estabilidad en las mediciones.  
-
-En conjunto, los experimentos confirman que la estrategia de repetir múltiples veces cada prueba permitió obtener valores representativos y cuantificar con precisión la variabilidad inherente del sistema. El desempeño mejora con más hilos, aunque con una eficiencia decreciente debido a la naturaleza de la paralelización y las restricciones de la arquitectura.
+- **`mmClasicaOpenMP.c`** → Código fuente en C del algoritmo corregido y documentado.  
+- **`mmClasicaOpenMP`** → Ejecutable generado a partir del código fuente.  
+- **`Makefile`** → Script para compilar automáticamente el programa con soporte OpenMP.  
+- **`lanzador.pl`** → Script en Perl que ejecuta el programa con los diferentes tamaños y hilos, generando resultados en `.dat`.  
+- **`dat.zip`** → Carpeta comprimida que contiene todos los resultados de las pruebas experimentales.  
+- **`README.md`** → Este documento. 
 
 ---
 
-## Conclusión
+## 🧪 Plan de pruebas
 
-Este laboratorio demuestra que la multiplicación de matrices con OpenMP alcanza mejoras de rendimiento notables al incrementar el número de hilos, especialmente en tamaños de matrices grandes. Sin embargo, en tamaños pequeños la sobrecarga limita las ventajas. El análisis estadístico basado en promedios y desviaciones estándar sustenta de forma rigurosa los resultados frente al ruido del sistema operativo, validando el impacto de OpenMP en el rendimiento de la multiplicación de matrices.  
+- **Dimensiones usadas:** 12 tamaños diferentes de matrices, todos menores a 14.000.  
+- **Niveles de paralelismo:** 1, 4, 8, 16 y 20 hilos.  
+- **Repeticiones:** Cada combinación se ejecutó 30 veces para reducir el ruido del sistema operativo y sustentar estadísticamente los resultados.  
+
+Cada corrida registra el **tiempo de ejecución en microsegundos**, permitiendo calcular promedios y desviaciones estándar para cada configuración.
+
+---
+
+## 📊 Resultados
+
+- Los resultados detallados de todas las corridas están disponibles en [`dat.zip`](./dat.zip).  
+- Se generó además un **documento con la tabla consolidada de promedios y desviaciones estándar**, así como informes en PDF que presentan el análisis y las conclusiones.  
+
+---
+
+## 🔎 Conclusiones
+
+El laboratorio permitió comprobar que el **paralelismo con OpenMP** reduce significativamente los tiempos de ejecución en tamaños medianos y grandes, mientras que en matrices pequeñas la sobrecarga de hilos limita los beneficios.  
+
+El análisis estadístico (promedios y desviaciones estándar) respaldó la validez de los resultados frente a variaciones y cargas alternas del sistema operativo.  
+En conclusión, se logró cumplir con los objetivos planteados: **corregir, documentar y probar el algoritmo, automatizar su compilación y ejecución, y diseñar un plan de pruebas de carga sustentado estadísticamente**.
