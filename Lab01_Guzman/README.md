@@ -8,7 +8,7 @@ Este laboratorio tuvo como objetivo evaluar el rendimiento de la multiplicación
 
 - **`mmClasicaOpenMP.c`** → código fuente en C con la implementación de la multiplicación de matrices utilizando OpenMP.  
 - **`mmClasicaOpenMP`** → ejecutable generado en Linux a partir del código fuente.  
-- **`Makefile`** → archivo de automatización que permite compilar fácilmente el proyecto y generar el ejecutable. Fue creado tomando como base un archivo auxiliar (`auto.txt`).  
+- **`Makefile`** → archivo de automatización que permite compilar fácilmente el proyecto y generar el ejecutable.  
 - **`lanzador.pl`** → script en Perl para ejecutar automáticamente el programa con distintos tamaños de matriz y números de hilos, almacenando los resultados en archivos `.dat`.  
 - **`dat.zip`** → contiene todos los archivos de salida `.dat` con las corridas experimentales.  
 - **`Tabla_Resultados.pdf`** → tabla consolidada con los resultados finales del laboratorio, que incluye **promedio de tiempo** y **desviación estándar** para cada combinación de tamaño e hilos.  
