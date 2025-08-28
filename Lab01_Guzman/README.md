@@ -29,7 +29,7 @@ El objetivo fue implementar, corregir, documentar y probar un algoritmo de **mul
 
 ## 🧪 Plan de pruebas
 
-- **Dimensiones usadas:** 12 tamaños diferentes de matrices, todos menores a 14.000.  
+- **Dimensiones usadas:** 11 tamaños diferentes de matrices, todos menores a 14.000.  
 - **Niveles de paralelismo:** 1, 4, 8, 16 y 20 hilos.  
 - **Repeticiones:** Cada combinación se ejecutó 30 veces para reducir el ruido del sistema operativo y sustentar estadísticamente los resultados.  
 
